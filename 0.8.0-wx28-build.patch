@@ -1,0 +1,43 @@
+Build for 2.8 and enable wxDisplay and wxSTC support.
+
+--- origsrc/wx.NET-0.8.0-Source/Src/wx-c/Makefile	2007-12-26 13:34:16.000000000 -0600
++++ src/wx.NET-0.8.0-Source/Src/wx-c/Makefile	2009-12-15 22:44:07.753665300 -0600
+@@ -24,12 +24,12 @@ ifeq ($(CONFIG),Release)
+   LIBDIR := ../..
+   OBJDIR := obj/Release
+   OUTDIR := ../../Bin
+-  CPPFLAGS := -MD -D "WXMAKINGDLL"
+-  CFLAGS += $(CPPFLAGS) -fPIC -O2 $(shell wx-config --static --cxxflags) -W -Wall -ansi
++  CPPFLAGS := -MD -D "WXMAKINGDLL" -D "WXNET_DISPLAY" -D "WXNET_STYLEDTEXTCTRL"
++  CFLAGS += $(CPPFLAGS) -O2 $(shell wx-config --cxxflags) -W -Wall
+   CXXFLAGS := $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -shared -s $(shell wx-config --static --libs)
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -shared -s $(shell wx-config --libs std,stc)
+   LDDEPS :=
+-  TARGET := libwx-c.so
++  TARGET := cygwx-c.dll
+   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES)
+ endif
+ 
+--- origsrc/wx.NET-0.8.0-Source/Src/wx.NET/Colour.cs	2007-11-11 08:14:45.000000000 -0600
++++ src/wx.NET-0.8.0-Source/Src/wx.NET/Colour.cs	2009-12-15 22:28:50.280188800 -0600
+@@ -139,7 +139,7 @@ namespace wx
+ 
+                 //---------------------------------------------------------------------
+                 
+-                #if __WXGTK__
++                #if __WXGTK__ && !WXWIN_VERSION_2_8
+                 public static Colour CreateByName(string name)
+                 {
+                     wxString wxName=wxString.NewFrom(name);
+--- origsrc/wx.NET-0.8.0-Source/Src/wx.NET/Makefile	2007-12-26 13:34:16.000000000 -0600
++++ src/wx.NET-0.8.0-Source/Src/wx.NET/Makefile	2009-12-15 22:30:00.099182200 -0600
+@@ -21,7 +21,7 @@ endif
+ ifeq ($(CONFIG),Release)
+   BINDIR := ../../Bin
+   OUTDIR := ../../Bin
+-  FLAGS += /t:library /r:System.Xml.dll /r:System.dll /r:System.Drawing.dll /r:System.Data.dll
++  FLAGS += /t:library /r:System.Xml.dll /r:System.dll /r:System.Drawing.dll /r:System.Data.dll /d:WXWIN_VERSION_2_8 /d:__WXGTK__ /d:WXNET_DISPLAY /d:WXNET_STYLEDTEXTCTRL
+   DEPS :=
+   TARGET := wx.NET.dll
+ endif

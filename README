@@ -1,0 +1,50 @@
+wx.NET
+------------------------------------------
+Mono .NET bindings for the wxWidgets GUI toolkit
+
+Runtime requirements:
+  cygwin-1.7.0-67
+  libgcc1-4.3.4-3
+  libstdc++6-4.3.4-3
+  libwx_baseu2.8_0-2.8.10.1-2
+  libwx_gtk2u2.8_0-2.8.10.1-2
+  mono-mscorlib1.0-2.4.3-1
+  mono-System-Drawing1.0-2.4.3-1
+  mono-System1.0-2.4.3-1
+
+Build requirements:
+(besides corresponding -devel packages)
+  binutils-20060817-1
+  cygport-0.3.11-1
+  gcc-core-3.4.4-3
+  gcc-g++-3.4.4-3
+
+Canonical website:
+  http://wxnet.sourceforge.net/
+
+Canonical download:
+  http://downloads.sourceforge.net/wxnet/
+
+-------------------------------------------
+
+Build instructions:
+  unpack wx.NET-0.8.0-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./wx.NET-0.8.0-X.cygport all
+
+This will create:
+  /usr/src/mono-wx-NET0.8-0.8.0-X.tar.bz2
+  /usr/src/wx.NET-0.8.0-X-src.tar.bz2
+
+-------------------------------------------
+
+Port Notes:
+
+----- version 0.8.0-2 -----
+Initial release for Cygwin 1.7.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

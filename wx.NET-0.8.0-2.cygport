@@ -1,0 +1,30 @@
+WX_VERSION=2.8
+WX_TOOLKIT=gtk2
+
+inherit wxwidgets mono
+
+DESCRIPTION=".NET wxWidgets bindings"
+HOMEPAGE="http://wxnet.sourceforge.net/"
+SRC_URI="mirror://sourceforge/wxnet/${P}-Source.tgz"
+SRC_DIR="${P}-Source"
+
+PATCH_URI="0.8.0-wx28-build.patch"
+
+PKG_NAMES="${PN} mono-wx-NET0.8"
+mono_wx_NET0_8_CONTENTS="usr/"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake CONFIG=Release
+}
+
+src_install() {
+	dobin ${B}/Bin/cygwx-c.dll
+
+	gacinto ${PN}
+	dogac ${B}/Bin/wx.NET.dll
+
+	# wxHTML Help, viewable with helpviewer (in python-wx2.8)
+	dodoc ${S}/Docs/*.htb
+}
