@@ -1,5 +1,5 @@
 category: DotNET
-requires: libgcc1 libstdc++6 libwx_baseu2.8_0 libwx_gtk2u2.8_0 mono-mscorlib1.0 mono-System-Drawing1.0 mono-System1.0
+requires: libgcc1 libstdc++6 libwx_baseu2.8_0 libwx_gtk2u2.8_0 mono
 external-source: wx.NET
 sdesc: "Mono wxGTK bindings"
 ldesc: "Mono .NET bindings for the wxWidgets GUI toolkit"

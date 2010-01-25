@@ -8,9 +8,7 @@ Runtime requirements:
   libstdc++6-4.3.4-3
   libwx_baseu2.8_0-2.8.10.1-2
   libwx_gtk2u2.8_0-2.8.10.1-2
-  mono-mscorlib1.0-2.4.3-1
-  mono-System-Drawing1.0-2.4.3-1
-  mono-System1.0-2.4.3-1
+  mono-2.4.3.1-1
 
 Build requirements:
 (besides corresponding -devel packages)
